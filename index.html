@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fat Mike Eats!</title>
+    <style>
+        body {
+            background-image: url('img/fatmike.jpeg');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: 100% 100%;
+        }
+
+        #box {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            overflow: hidden;
+        }
+
+        #box b {
+            display: block;
+            position: absolute;
+            animation: moveX 2s linear 0s infinite alternate, moveY 3.4s linear 0s infinite alternate;
+            font-size: 50pt;
+        }
+
+        @keyframes moveX {
+            from {
+                left: 0;
+            }
+            to {
+                left: 100%;
+            }
+        }
+
+        @keyframes moveY {
+            from {
+                top: 0;
+            }
+            to {
+                top: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+<script>
+    async function addBurgers() {
+        for (let i = 0; i < 50; i++) {
+            const burger = document.createElement("b");
+            burger.appendChild(document.createTextNode("🍔"))
+            document.getElementById("box").appendChild(burger)
+            await new Promise(r => setTimeout(r, 500));
+        }
+    }
+
+    addBurgers();
+</script>
+</body>
+</html>
